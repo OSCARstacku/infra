@@ -4,6 +4,7 @@
 
 # Verificar infraestructura en Kubernetes:
 sudo kubectl get all
+sudo kubectl get all -n sdata
 
 # Eliminar todo:
 sudo kubectl delete all --all 
