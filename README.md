@@ -109,3 +109,14 @@ sudo kubectl delete -f infra/mongodb/
 helm version
 
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+
+cd infra/pulsar
+
+helm repo add apache https://pulsar.apache.org/charts
+
+helm repo update
+
+chmod +x install.sh
+
+./install.sh
