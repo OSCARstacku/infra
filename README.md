@@ -29,11 +29,13 @@ sudo kubectl get ns
 # Configurar namespace actual como predeterminado
 sudo kubectl config set-context --current --namespace=sdata
 
-# Listar pods
-sudo kubectl get pods
-
 # Comprobar namespace actual
 sudo kubectl config view --minify | grep namespace
+
+# ###############################################################
+
+# Listar pods
+sudo kubectl get pods
 
 # Listar servicios
 sudo kubectl get services
