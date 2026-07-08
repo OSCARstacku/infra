@@ -102,6 +102,9 @@ sudo kubectl get services -n sdata
 sudo kubectl delete -f infra/namespace.yaml
 sudo kubectl delete -f infra/mongodb/
 
+# Listar imágenes de K3s:
+sudo k3s crictl images
+
 # ###############################################################
 #                           Helm
 # ###############################################################
