@@ -120,3 +120,8 @@ helm repo update
 chmod +x install.sh
 
 sudo ./install.sh
+
+sudo kubectl get pods -n sdata
+sudo kubectl get svc -n sdata
+sudo kubectl get pods -n sdata -w
+
