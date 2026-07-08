@@ -101,3 +101,11 @@ sudo kubectl get services -n sdata
 # Eliminar infraestructura en Kubernetes:
 sudo kubectl delete -f infra/namespace.yaml
 sudo kubectl delete -f infra/mongodb/
+
+# ###############################################################
+#                           Helm
+# ###############################################################
+
+helm version
+
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
