@@ -22,7 +22,8 @@ sudo kubectl create namespace sdata
 sudo kubectl delete namespace sdata
 
 # Verificar namespace
-sudo kubectl get namespaces ó sudo kubectl get ns
+sudo kubectl get namespaces
+sudo kubectl get ns
 
 # Configurar namespace actual como predeterminado
 sudo kubectl config set-context --current --namespace=sdata
