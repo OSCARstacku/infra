@@ -135,3 +135,7 @@ sudo kubectl get pods -n sdata
 sudo kubectl get svc -n sdata
 sudo kubectl get pods -n sdata -w
 
+# Para borrar ingressclass kong en caso de tenerlo en default
+sudo kubectl delete ingressclass kong
+
+
