@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dragonfly-deployment
+  namespace: sdata
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: dragonfly
+
+  template:
+    metadata:
+      labels:
+        app: dragonfly
+
+    spec:
+      containers:
+      - name: dragonfly
+
+        image: docker.dragonflydb.io/dragonflydb/dragonfly:latest
+
+        args:
+          - --bind=0.0.0.0
+          - --port=6379
+
+        ports:
+        - containerPort: 6379

@@ -54,6 +54,9 @@ sudo kubectl get replicasets
 # Aplicar infraestructura en Kubernetes (Raíz principal ejemplo mss-sdata):
 sudo kubectl apply -f infra/namespace.yaml
 sudo kubectl apply -f infra/mongodb/
+sudo kubectl apply -f infra/dragonfly/
+sudo kubectl apply -f infra/pulsar/
+sudo kubectl apply -f infra/kong/
 
 # Verificar infraestructura en Kubernetes:
 sudo kubectl get pods -n sdata
