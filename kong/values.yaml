@@ -1,3 +1,5 @@
+fullnameOverride: kong
+
 deployment:
 
   kong:
@@ -9,7 +11,15 @@ env:
 
 proxy:
 
+  enabled: true
+
   type: LoadBalancer
+
+  http:
+    enabled: true
+
+  tls:
+    enabled: false
 
 admin:
 
@@ -27,6 +37,20 @@ ingressController:
 
   enabled: true
 
-serviceMonitor:
+enterprise:
 
   enabled: false
+
+resources:
+
+  requests:
+
+    cpu: 200m
+
+    memory: 256Mi
+
+  limits:
+
+    cpu: "1"
+
+    memory: 1Gi
