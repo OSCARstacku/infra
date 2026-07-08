@@ -119,4 +119,4 @@ helm repo update
 
 chmod +x install.sh
 
-./install.sh
+sudo ./install.sh
