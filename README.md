@@ -78,8 +78,16 @@ sudo kubectl apply -f infra/namespace.yaml
 sudo kubectl apply -f infra/mongodb/
 sudo kubectl apply -f infra/dragonfly/
 # sudo kubectl apply -f infra/pulsar/
-sudo kubectl apply -k infra/pulsar/zookeeper/
-sudo kubectl apply -k infra/pulsar/bookkeeper/
+# sudo kubectl apply -k infra/pulsar/zookeeper/
+# sudo kubectl apply -k infra/pulsar/bookkeeper/
+
+# Para borrar zookeeper
+
+# sudo kubectl delete deployment zookeeper-deployment -n sdata
+# sudo kubectl delete deployment bookkeeper-deployment -n sdata
+# sudo kubectl delete service zookeeper-service -n sdata
+# sudo kubectl delete service bookkeeper-service -n sdata
+# sudo kubectl delete pvc bookkeeper-pvc -n sdata
 
 sudo kubectl apply -f infra/kong/
 
