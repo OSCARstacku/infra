@@ -1,0 +1,119 @@
+#
+# SDATA - Apache Pulsar
+#
+
+fullnameOverride: pulsar
+
+components:
+
+  zookeeper: true
+
+  bookkeeper: true
+
+  broker: true
+
+  proxy: true
+
+  autorecovery: true
+
+#
+# ZooKeeper
+#
+
+zookeeper:
+
+  replicaCount: 1
+
+  volumes:
+    data:
+      persistence: true
+      size: 5Gi
+
+#
+# BookKeeper
+#
+
+bookkeeper:
+
+  replicaCount: 1
+
+  volumes:
+    journal:
+      persistence: true
+      size: 10Gi
+
+    ledgers:
+      persistence: true
+      size: 20Gi
+
+#
+# Broker
+#
+
+broker:
+
+  replicaCount: 1
+
+  resources:
+
+    requests:
+
+      cpu: 500m
+
+      memory: 1Gi
+
+    limits:
+
+      cpu: "1"
+
+      memory: 2Gi
+
+#
+# Proxy
+#
+
+proxy:
+
+  replicaCount: 1
+
+  service:
+
+    type: ClusterIP
+
+#
+# Auto Recovery
+#
+
+autorecovery:
+
+  replicaCount: 1
+
+#
+# Authentication
+#
+
+auth:
+
+  authentication:
+    enabled: false
+
+  authorization:
+    enabled: false
+
+#
+# TLS
+#
+
+tls:
+
+  enabled: false
+
+#
+# Monitoring
+#
+
+monitoring:
+
+  prometheus: false
+
+  grafana: false
