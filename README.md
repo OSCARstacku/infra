@@ -21,6 +21,13 @@
 #                           Kubernetes
 # ###############################################################
 
+# Configurar kubectl para usuario actual (si se está utilizando sudo):
+mkdir -p ~/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown $(id -u):$(id -g) ~/.kube/config
+export KUBECONFIG=$HOME/.kube/config
+source ~/.bashrc
+
 # Verificar infraestructura en Kubernetes:
 sudo kubectl get all
 sudo kubectl get all -n sdata
