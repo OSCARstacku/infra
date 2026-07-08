@@ -1,0 +1,32 @@
+deployment:
+
+  kong:
+    enabled: true
+
+env:
+
+  database: "off"
+
+proxy:
+
+  type: LoadBalancer
+
+admin:
+
+  enabled: true
+
+  type: ClusterIP
+
+manager:
+
+  enabled: true
+
+  type: ClusterIP
+
+ingressController:
+
+  enabled: true
+
+serviceMonitor:
+
+  enabled: false
