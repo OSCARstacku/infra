@@ -79,6 +79,8 @@ sudo kubectl apply -f infra/mongodb/
 sudo kubectl apply -f infra/dragonfly/
 # sudo kubectl apply -f infra/pulsar/
 sudo kubectl apply -k infra/pulsar/zookeeper/
+sudo kubectl apply -k infra/pulsar/bookkeeper/
+
 sudo kubectl apply -f infra/kong/
 
 # Verificar infraestructura en Kubernetes:
