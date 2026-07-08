@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookkeeper-deployment
+  namespace: sdata
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: bookkeeper
+
+  template:
+    metadata:
+      labels:
+        app: bookkeeper
+
+    spec:
+      containers:
+
+        - name: bookkeeper
+
+          image: apachepulsar/pulsar:4.0.6
+
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - bin/pulsar
+
+          args:
+            - bookie
+
+          ports:
+
+            - containerPort: 3181
+
+          env:
+
+            - name: PULSAR_MEM
+              value: "-Xms512m -Xmx512m"
+
+            - name: zkServers
+              value: zookeeper-service:2181
+
+          volumeMounts:
+
+            - name: bookkeeper-storage
+              mountPath: /pulsar/data
+
+      volumes:
+
+        - name: bookkeeper-storage
+
+          persistentVolumeClaim:
+            claimName: bookkeeper-pvc
