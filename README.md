@@ -1,35 +1,19 @@
 # ###############################################################
-#                        Infraestructura
-# ###############################################################
-
-                    Frontend
-
-                        │ HTTP/HTTPS
-                        ▼
-                  Kong Gateway
-                        │ gRPC
-     ┌──────────────────┼──────────────────┐
-     ▼                  ▼                  ▼
- ms-admin          ms-users          ms-orders
-     │                  │                  │
-     ├──────────────┬───┴──────────────┬───┤
-     ▼              ▼                  ▼
- MongoDB      DragonflyDB        Apache Pulsar
-
-
-# ###############################################################
 #                           Kubernetes
 # ###############################################################
 
 # IMPORTANTE
 sudo kubectl logs -f deployment/sdata-ms-base -n sdata
 
+# Eliminar namespace preso
+sudo kubectl get namespace sdata -o json | tr -d "\n" | sed "s/\"finalizers\": \[[^]]*\]/\"finalizers\": []/" | sudo kubectl replace --raw /api/v1/namespaces/sdata/finalize -f -
+
 # Configurar kubectl para usuario actual (si se está utilizando sudo):
 mkdir -p ~/.kube
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
 export KUBECONFIG=$HOME/.kube/config
-source ~/.bashrc
+# source ~/.bashrc
 
 # Verificar infraestructura en Kubernetes:
 sudo kubectl get all
@@ -103,7 +87,7 @@ sudo kubectl apply -f infra/dragonfly/
 # sudo kubectl delete service bookkeeper-service -n sdata
 # sudo kubectl delete pvc bookkeeper-pvc -n sdata
 
-sudo kubectl apply -f infra/kong/
+# sudo kubectl apply -f infra/kong/
 
 # Verificar infraestructura en Kubernetes:
 sudo kubectl get pods -n sdata
