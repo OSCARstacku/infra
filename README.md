@@ -60,6 +60,7 @@ sudo kubectl config view --minify | grep namespace
 
 # Ver logs del pod anterior (en caso de error)
 sudo kubectl logs deployment/sdata-ms-base -n sdata --previous
+sudo kubectl describe pod sdata-ms-base-774f796f9-t7xqx -n sdata
 
 # ###############################################################
 
