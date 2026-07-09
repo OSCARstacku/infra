@@ -129,4 +129,27 @@ sudo kubectl get pods -n sdata -w
 # Para borrar ingressclass kong en caso de tenerlo en default
 sudo kubectl delete ingressclass kong
 
+# Apache Pulsar
+
+Infraestructura de mensajería de SDATA.
+
+Componentes desplegados:
+
+- ZooKeeper
+- BookKeeper
+- Broker
+- Proxy
+
+Namespace:
+
+sdata
+
+Instalación:
+
+./install.sh
+
+Desinstalación:
+
+./uninstall.sh
+
 
