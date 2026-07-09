@@ -12,7 +12,7 @@
             ▼                  ▼                  ▼
         ms-admin          ms-users          ms-orders
             │                  │                  │
-            ├──────────────────┬──────────────────┬
+            ├──────────────────┬──────────────────┐
             ▼                  ▼                  ▼
         MongoDB           DragonflyDB        Apache Pulsar
 
