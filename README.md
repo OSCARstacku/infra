@@ -21,6 +21,9 @@
 #                           Kubernetes
 # ###############################################################
 
+# IMPORTANTE
+sudo kubectl logs -f deployment/sdata-ms-base -n sdata
+
 # Configurar kubectl para usuario actual (si se está utilizando sudo):
 mkdir -p ~/.kube
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
