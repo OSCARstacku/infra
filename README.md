@@ -58,6 +58,9 @@ sudo kubectl config set-context --current --namespace=sdata
 # Comprobar namespace actual
 sudo kubectl config view --minify | grep namespace
 
+# Ver logs del pod anterior (en caso de error)
+sudo kubectl logs deployment/sdata-ms-base -n sdata --previous
+
 # ###############################################################
 
 # Listar pods
