@@ -12,3 +12,5 @@ sudo kubectl config set-context --current --namespace=sdata
 sudo kubectl apply -f infra/namespace.yaml
 sudo kubectl apply -f infra/mongodb/
 sudo kubectl apply -f infra/dragonfly/
+
+./infra/kong/install.sh
