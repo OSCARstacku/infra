@@ -15,3 +15,5 @@ sudo kubectl apply -f infra/dragonfly/
 
 # En infra/kong (sudo su):
 ./install.sh
+
+# https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
