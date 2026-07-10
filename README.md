@@ -89,8 +89,11 @@ sudo kubectl apply -f infra/dragonfly/
 
 # sudo kubectl apply -f infra/kong/
 
+# Revisar todo por ejemplo de pulsar
+sudo kubectl get all --all-namespaces | grep pulsar
+
 # Verificar infraestructura en Kubernetes:
-sudo kubectl get pods -n sdata
+sudo kubectl get pods -n sdata -w
 sudo kubectl get all -n sdata
 sudo kubectl get pvc -n sdata
 sudo kubectl get deployments -n sdata
@@ -115,22 +118,17 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 cd infra/pulsar
 
 helm repo add apache https://pulsar.apache.org/charts
-
 helm repo update
-
 chmod +x install.sh
-
 sudo ./install.sh
 
-sudo kubectl get pods -n sdata
-sudo kubectl get svc -n sdata
-sudo kubectl get pods -n sdata -w
+# Para borrar kong o pulsar:
+helm uninstall pulsar -n sdata
 
 # Para borrar ingressclass kong en caso de tenerlo en default
 sudo kubectl delete ingressclass kong
 
 # Apache Pulsar
-
 Infraestructura de mensajería de SDATA.
 
 Componentes desplegados:
