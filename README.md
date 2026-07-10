@@ -125,6 +125,15 @@ sudo ./install.sh
 # Para borrar kong o pulsar:
 helm uninstall pulsar -n sdata
 
+kubectl delete job pulsar-broker-sts-cleanup -n sdata
+kubectl delete all -l app.kubernetes.io/instance=pulsar -n sdata
+
+# Para borrar job pulsar-victoria-metrics-operator-cleanup-hook a la fuerza:
+sudo kubectl delete job pulsar-victoria-metrics-operator-cleanup-hook \
+  -n sdata \
+  --grace-period=0 \
+  --force
+
 # Para borrar ingressclass kong en caso de tenerlo en default
 sudo kubectl delete ingressclass kong
 
