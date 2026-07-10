@@ -14,9 +14,11 @@ sudo kubectl apply -f infra/mongodb/
 sudo kubectl apply -f infra/dragonfly/
 
 # En infra/kong (sudo su):
+chmod +x install.sh
 ./install.sh
 
 # https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
 
 # En infra/pulsar (sudo su):
+chmod +x install.sh
 ./install.sh
