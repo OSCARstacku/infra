@@ -13,4 +13,5 @@ sudo kubectl apply -f infra/namespace.yaml
 sudo kubectl apply -f infra/mongodb/
 sudo kubectl apply -f infra/dragonfly/
 
-./infra/kong/install.sh
+# En infra/kong (sudo su):
+./install.sh
