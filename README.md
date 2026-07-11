@@ -126,6 +126,7 @@ sudo ./install.sh
 helm uninstall pulsar -n sdata
 
 kubectl delete job pulsar-broker-sts-cleanup -n sdata
+
 kubectl delete all -l app.kubernetes.io/instance=pulsar -n sdata
 
 # Para borrar job pulsar-victoria-metrics-operator-cleanup-hook a la fuerza:
