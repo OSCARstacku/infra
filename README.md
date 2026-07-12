@@ -20,7 +20,7 @@ sudo kubectl get all
 sudo kubectl get all -n sdata
 
 # Eliminar todo:
-sudo kubectl delete all --all 
+sudo kubectl delete all --all --force
 sudo kubectl delete all --all -n default ó sdata (-n es namespace)
 
 sudo kubectl delete pod --all
