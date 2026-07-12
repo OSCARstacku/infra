@@ -23,6 +23,7 @@ sudo kubectl get all -n sdata
 sudo kubectl delete all --all 
 sudo kubectl delete all --all -n default ó sdata (-n es namespace)
 
+sudo kubectl delete pod --all
 sudo kubectl delete deployment --all
 sudo kubectl delete service --all
 sudo kubectl delete pvc --all
@@ -125,9 +126,9 @@ sudo ./install.sh
 # Para borrar kong o pulsar:
 helm uninstall pulsar -n sdata
 
-kubectl delete job pulsar-broker-sts-cleanup -n sdata
+sudo kubectl delete job pulsar-broker-sts-cleanup -n sdata
 
-kubectl delete all -l app.kubernetes.io/instance=pulsar -n sdata
+sudo kubectl delete all -l app.kubernetes.io/instance=pulsar -n sdata
 
 # Para borrar job pulsar-victoria-metrics-operator-cleanup-hook a la fuerza:
 sudo kubectl delete job pulsar-victoria-metrics-operator-cleanup-hook \
