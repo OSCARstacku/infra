@@ -124,7 +124,7 @@ chmod +x install.sh
 sudo ./install.sh
 
 # Para borrar kong o pulsar:
-helm uninstall pulsar -n sdata
+sudo helm uninstall pulsar -n sdata
 
 sudo kubectl delete job pulsar-broker-sts-cleanup -n sdata
 
