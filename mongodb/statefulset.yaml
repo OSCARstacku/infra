@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: StatefulSet
+
+metadata:
+  name: mongodb
+  namespace: sdata
+  labels:
+    app: mongodb
+
+spec:
+  serviceName: mongodb-service
+
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: mongodb
+
+  template:
+    metadata:
+      labels:
+        app: mongodb
+
+    spec:
+      terminationGracePeriodSeconds: 30
+
+      securityContext:
+        fsGroup: 999
+
+      containers:
+        - name: mongodb
+
+          image: mongo:8.0.13
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 27017
+              name: mongodb
+
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+
+            limits:
+              cpu: "2"
+              memory: 2Gi
+
+          livenessProbe:
+            tcpSocket:
+              port: 27017
+
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
+
+          readinessProbe:
+            tcpSocket:
+              port: 27017
+
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+          volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
+
+  volumeClaimTemplates:
+    - metadata:
+        name: mongodb-data
+
+      spec:
+        accessModes:
+          - ReadWriteOnce
+
+        storageClassName: local-path
+
+        resources:
+          requests:
+            storage: 20Gi

@@ -5,9 +5,28 @@ deployment:
   kong:
     enabled: true
 
+replicaCount: 1
+
+image:
+
+  repository: kong
+  tag: "3.12"
+
 env:
 
   database: "off"
+
+  router_flavor: expressions
+
+  nginx_worker_processes: "auto"
+
+  nginx_http_keepalive_requests: "10000"
+
+  nginx_http_keepalive_timeout: "75"
+
+  nginx_proxy_proxy_buffer_size: "160k"
+
+  nginx_proxy_proxy_buffers: "64 160k"
 
 proxy:
 
@@ -15,10 +34,16 @@ proxy:
 
   type: LoadBalancer
 
+  annotations: {}
+
   http:
+
     enabled: true
 
+    servicePort: 80
+
   tls:
+
     enabled: false
 
 admin:
@@ -27,11 +52,19 @@ admin:
 
   type: ClusterIP
 
+  http:
+
+    enabled: true
+
 manager:
 
   enabled: true
 
   type: ClusterIP
+
+  http:
+
+    enabled: true
 
 ingressController:
 
@@ -45,7 +78,7 @@ resources:
 
   requests:
 
-    cpu: 200m
+    cpu: 250m
 
     memory: 256Mi
 
@@ -54,3 +87,37 @@ resources:
     cpu: "1"
 
     memory: 1Gi
+
+readinessProbe:
+
+  httpGet:
+
+    path: /status
+
+    port: status
+
+  initialDelaySeconds: 5
+
+  periodSeconds: 10
+
+livenessProbe:
+
+  httpGet:
+
+    path: /status
+
+    port: status
+
+  initialDelaySeconds: 15
+
+  periodSeconds: 10
+
+podSecurityContext:
+
+  fsGroup: 1000
+
+containerSecurityContext:
+
+  allowPrivilegeEscalation: false
+
+  readOnlyRootFilesystem: false
