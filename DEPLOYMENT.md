@@ -12,33 +12,33 @@
 # sudo kubectl config view --minify | grep namespace
 
 # Aplicar infraestructura en Kubernetes (Raíz principal ejemplo mss-sdata):
-sudo kubectl apply -f infra/namespace.yaml
-sudo kubectl config set-context --current --namespace=sdata
-sudo kubectl config view --minify | grep namespace
+kubectl apply -f infra/namespace.yaml
+kubectl config set-context --current --namespace=sdata
+kubectl config view --minify | grep namespace
 
-sudo kubectl apply -f infra/mongodb/
-sudo kubectl apply -f infra/dragonfly/
+kubectl apply -f infra/mongodb/
+kubectl apply -f infra/dragonfly/
 
-# En infra/metallb (sudo su):
+# En infra/metallb (sudo su / root / USER):
 chmod +x install.sh
-sudo ./install.sh
+./install.sh
 
-sudo kubectl apply -f ipaddresspool.yaml
-sudo kubectl apply -f l2advertisement.yaml
+kubectl apply -f ipaddresspool.yaml
+kubectl apply -f l2advertisement.yaml
 
-sudo kubectl get ipaddresspool -n metallb-system
-sudo kubectl get l2advertisement -n metallb-system
+kubectl get ipaddresspool -n metallb-system
+kubectl get l2advertisement -n metallb-system
 
-sudo kubectl get pods
-sudo kubectl get pvc
-sudo kubectl get statefulsets
+kubectl get pods
+kubectl get pvc
+kubectl get statefulsets
 
-# En infra/kong (sudo su):
+# En infra/kong (sudo su / root / USER):
 chmod +x install.sh
 ./install.sh
 
 # https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
 
-# En infra/pulsar (sudo su):
+# En infra/pulsar (sudo su / root / USER):
 chmod +x install.sh
 ./install.sh
