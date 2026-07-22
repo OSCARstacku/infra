@@ -40,6 +40,10 @@ bookkeeper:
 
   replicaCount: 1
 
+  metadataServiceUri: zk+hierarchical://pulsar-zookeeper:2181/ledgers
+
+  podAntiAffinity: false
+
   resources:
 
     requests:
@@ -67,6 +71,11 @@ bookkeeper:
 broker:
 
   replicaCount: 1
+
+  configData:
+    managedLedgerDefaultEnsembleSize: "1"
+    managedLedgerDefaultWriteQuorum: "1"
+    managedLedgerDefaultAckQuorum: "1"
 
   resources:
 
