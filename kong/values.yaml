@@ -1,19 +1,8 @@
 fullnameOverride: kong
 
-deployment:
-
-  kong:
-    enabled: true
-
 replicaCount: 1
 
-image:
-
-  repository: kong
-  tag: "3.12"
-
 env:
-
   database: "off"
 
   router_flavor: expressions
@@ -29,7 +18,6 @@ env:
   nginx_proxy_proxy_buffers: "64 160k"
 
 proxy:
-
   enabled: true
 
   type: LoadBalancer
@@ -37,87 +25,39 @@ proxy:
   annotations: {}
 
   http:
-
     enabled: true
-
     servicePort: 80
 
   tls:
-
     enabled: false
 
 admin:
-
   enabled: true
 
   type: ClusterIP
 
   http:
-
     enabled: true
 
 manager:
-
   enabled: true
 
   type: ClusterIP
 
   http:
-
     enabled: true
 
 ingressController:
-
   enabled: true
 
 enterprise:
-
   enabled: false
 
 resources:
-
   requests:
-
     cpu: 250m
-
     memory: 256Mi
 
   limits:
-
     cpu: "1"
-
     memory: 1Gi
-
-readinessProbe:
-
-  httpGet:
-
-    path: /status
-
-    port: status
-
-  initialDelaySeconds: 5
-
-  periodSeconds: 10
-
-livenessProbe:
-
-  httpGet:
-
-    path: /status
-
-    port: status
-
-  initialDelaySeconds: 15
-
-  periodSeconds: 10
-
-podSecurityContext:
-
-  fsGroup: 1000
-
-containerSecurityContext:
-
-  allowPrivilegeEscalation: false
-
-  readOnlyRootFilesystem: false

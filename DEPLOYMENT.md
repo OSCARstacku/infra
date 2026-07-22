@@ -35,10 +35,10 @@ sudo kubectl get statefulsets
 
 # En infra/kong (sudo su):
 chmod +x install.sh
-sudo ./install.sh
+./install.sh
 
 # https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
 
 # En infra/pulsar (sudo su):
 chmod +x install.sh
-sudo ./install.sh
+./install.sh
