@@ -20,6 +20,14 @@ kubectl apply -f infra/mongodb/
 kubectl apply -f infra/dragonfly/
 
 # En infra/metallb (sudo su / root / USER):
+hostname -I
+# Verifica rango de IPs
+for i in {240..250}; do
+  ping -c1 -W1 192.168.0.$i >/dev/null \
+    && echo "192.168.0.$i OCUPADA" \
+    || echo "192.168.0.$i LIBRE"
+done
+
 chmod +x install.sh
 ./install.sh
 
