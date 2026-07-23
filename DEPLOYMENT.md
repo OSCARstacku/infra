@@ -28,6 +28,9 @@ for i in {240..250}; do
     || echo "192.168.0.$i LIBRE"
 done
 
+# Instalar helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
 chmod +x install.sh
 ./install.sh
 
