@@ -16,7 +16,7 @@
             ▼                  ▼                  ▼
         MongoDB           DragonflyDB        Apache Pulsar
                                                   │
-                                              websocket-ms
+                                       websocket-ms / Others-ms
                                                   │
                                              WebSocket/SSE
                                                   │
