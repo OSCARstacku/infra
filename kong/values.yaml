@@ -3,16 +3,16 @@ fullnameOverride: kong
 replicaCount: 1
 
 image:
-
   repository: docker.io/library/kong-grpc
 
   tag: "3.9.3"
   
-  pullPolicy: Never
+  pullPolicy: IfNotPresent
 
 env:
-
   database: "off"
+
+  declarative_config: /etc/kong/kong.yaml
 
   router_flavor: expressions
 
