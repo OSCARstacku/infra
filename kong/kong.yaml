@@ -2,28 +2,31 @@ _format_version: "3.0"
 
 services:
 
-- name: sdata-ms-base
-
-  host: sdata-ms-base
-  port: 50051
-
-  protocol: grpc
-
-  routes:
-
   - name: sdata-ms-base
 
-    paths:
-      - /
+    protocol: grpc
 
-    protocols:
-      - http
-      - https
+    host: sdata-ms-base
 
-  plugins:
+    port: 50051
 
-  - name: grpc-gateway
+    routes:
 
-    config:
+      - name: sdata-ms-base-route
 
-      proto: /etc/kong/protos/base/v1/base.proto
+        paths:
+          - /api/v1/base
+
+        strip_path: false
+
+        protocols:
+          - http
+          - https
+
+    plugins:
+
+      - name: grpc-gateway
+
+        config:
+
+          proto: /etc/kong/protos/base/v1/base.proto
