@@ -44,13 +44,13 @@ kubectl get pods
 kubectl get pvc
 kubectl get statefulsets
 
-# En infra/kong (sudo su / root / USER) SOLO PARA INSTALACIÓN INICIAL:
-chmod +x install.sh
-./install.sh
-
 # Levantar Dockerfile de kong
 cd ~/Documentos/mss-sdata
 docker build -t sdata-kong:3.9.3 -f infra/kong/Dockerfile .
+
+# En infra/kong (sudo su / root / USER) SOLO PARA INSTALACIÓN INICIAL:
+chmod +x install.sh
+./install.sh
 
 # Para redeploy
 ./deploy.sh
