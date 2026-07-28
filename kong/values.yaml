@@ -4,10 +4,10 @@ replicaCount: 1
 
 image:
 
-  repository: kong-grpc
+  repository: docker.io/library/kong-grpc
 
   tag: "3.9.3"
-
+  
   pullPolicy: Never
 
 env:
