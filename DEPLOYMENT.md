@@ -56,6 +56,7 @@ docker save kong-grpc:3.9.3 -o kong-grpc.tar
 
 # Importar la imagen en k3s
 sudo k3s ctr images import kong-grpc.tar
+sudo k3s ctr images list | grep kong-grpc
 
 # Verificar
 docker run --rm -it sdata-kong:3.9.3 sh
