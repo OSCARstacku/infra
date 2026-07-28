@@ -1,9 +1,0 @@
-- name: sdata-ms-base
-
-  host: sdata-ms-base
-
-  port: 50051
-
-  protocol: grpc
-
-  routes: []
