@@ -46,11 +46,25 @@ kubectl get statefulsets
 
 # Levantar Dockerfile de kong
 cd ~/Documentos/mss-sdata
-docker build -t sdata-kong:3.9.3 -f infra/kong/Dockerfile .
+docker build \
+-t kong-grpc:3.9.3 \
+-f infra/kong/Dockerfile .
+docker images | grep sdata-kong
+
+# Cargar el runtime
+docker save kong-grpc:3.9.3 -o kong-grpc.tar
+
+# Importar la imagen en k3s
+sudo k3s ctr images import kong-grpc.tar
+
+# Verificar
+docker run --rm -it sdata-kong:3.9.3 sh
 
 # En infra/kong (sudo su / root / USER) SOLO PARA INSTALACIÓN INICIAL:
 chmod +x install.sh
 ./install.sh
+
+kubectl rollout restart deployment kong -n sdata
 
 # Para redeploy
 ./deploy.sh
