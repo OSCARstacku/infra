@@ -48,6 +48,10 @@ kubectl get statefulsets
 chmod +x install.sh
 ./install.sh
 
+# Levantar Dockerfile de kong
+cd ~/Documentos/mss-sdata
+docker build -t sdata-kong:3.9.3 -f infra/kong/Dockerfile .
+
 # Para redeploy
 ./deploy.sh
 
