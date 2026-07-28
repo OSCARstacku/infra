@@ -162,4 +162,35 @@ Desinstalación:
 
 ./uninstall.sh
 
+# Ver plugins de Kong
+kubectl exec -it -n sdata \
+kong-5bdcbb4545-cgl6k \
+-c proxy -- \
+ls -la /usr/local/share/lua/5.1/kong/plugins/grpc-gateway
+
+# Ver schema de Kong
+kubectl exec -it -n sdata \
+kong-5bdcbb4545-cgl6k \
+-c proxy -- \
+cat /usr/local/share/lua/5.1/kong/plugins/grpc-gateway/schema.lua
+
+kubectl exec -it -n sdata \
+kong-5bdcbb4545-cgl6k \
+-c proxy -- \
+sed -n '1,220p' /usr/local/share/lua/5.1/kong/plugins/grpc-gateway/deco.lua
+
+kubectl exec -it -n sdata \
+kong-5bdcbb4545-cgl6k \
+-c proxy -- \
+sed -n '221,440p' /usr/local/share/lua/5.1/kong/plugins/grpc-gateway/deco.lua
+
+kubectl exec -it -n sdata \
+kong-5bdcbb4545-cgl6k \
+-c proxy -- \
+sed -n '441,700p' /usr/local/share/lua/5.1/kong/plugins/grpc-gateway/deco.lua
+
+
+
+
+
 
