@@ -65,10 +65,9 @@ docker run --rm -it sdata-kong:3.9.3 sh
 chmod +x install.sh
 ./install.sh
 
-kubectl rollout restart deployment kong -n sdata
-
 # Para redeploy
 ./deploy.sh
+kubectl rollout restart deployment kong -n sdata
 
 # Revisar protos en KONG:
 kubectl exec -it -n sdata deployment/kong -c proxy -- sh
