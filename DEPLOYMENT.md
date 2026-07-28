@@ -48,9 +48,13 @@ kubectl get statefulsets
 chmod +x install.sh
 ./install.sh
 
-#
+# Para redeploy
+./deploy.sh
 
-
+# Revisar protos en KONG:
+kubectl exec -it -n sdata deployment/kong -c proxy -- sh
+ls /etc/kong
+ls /etc/kong/protos
 
 # https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
 
