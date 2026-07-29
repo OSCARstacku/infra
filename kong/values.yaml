@@ -46,7 +46,7 @@ manager:
 
 ingressController:
 
-  enabled: true
+  enabled: false
 
 enterprise:
 
