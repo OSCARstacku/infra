@@ -70,9 +70,25 @@ chmod +x install.sh
 kubectl rollout restart deployment kong -n sdata
 
 # Revisar protos en KONG:
-kubectl exec -it -n sdata deployment/kong -c proxy -- sh
-ls /etc/kong
-ls /etc/kong/protos
+kubectl logs -n sdata deployment/kong -c proxy | grep grpc
+kubectl exec -it -n sdata deploy/kong -c proxy -- \
+ls /etc/kong/protos/base/v1
+
+# Otra forma
+# kubectl exec -it -n sdata deployment/kong -c proxy -- sh
+# ls /etc/kong
+# ls /etc/kong/protos
+
+# Debe aparecer:
+base.proto
+
+kubectl exec -it -n sdata deploy/kong -c proxy -- \
+ls /etc/kong/protos/google/api
+
+# Debe aparecer: 
+annotations.proto
+http.proto
+...
 
 # https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
 
