@@ -90,6 +90,14 @@ annotations.proto
 http.proto
 ...
 
+# Modificar el archivo gprc.lua
+mkdir -p infra/kong
+
+kubectl cp \
+sdata/$(kubectl get pod -n sdata -l app=kong -o jsonpath='{.items[0].metadata.name}'):/usr/local/share/lua/5.1/kong/tools/grpc.lua \
+infra/kong/grpc.lua \
+-c proxy
+
 # https://docs.konghq.com/kubernetes-ingress-controller/latest/guides/getting-started/
 
 # En infra/pulsar (sudo su / root / USER):
