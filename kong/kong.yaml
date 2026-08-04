@@ -19,7 +19,7 @@ services:
         config:
           proto: /etc/kong/protos/base/v1/base.proto
 
-  # 🟢 NUEVO SERVICIO: ms-admin
+  # NUEVO SERVICIO: ms-admin
   - name: ms-admin
     protocol: grpc
     host: ms-admin    # El nombre del Service de Kubernetes de ms-admin
