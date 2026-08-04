@@ -6,7 +6,6 @@ COPY infra/kong/grpc.lua \
 COPY infra/kong/kong.yaml \
     /etc/kong/kong.yaml
 
-# 🟢 Copiar todo shared-go-proto a /etc/kong/protos/
 COPY shared-go-proto/ \
     /etc/kong/protos/
 
