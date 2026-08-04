@@ -3,65 +3,43 @@ fullnameOverride: kong
 replicaCount: 1
 
 image:
-
   repository: docker.io/library/kong-grpc
-
   tag: "3.9.3"
-
   pullPolicy: IfNotPresent
 
 env:
-
   database: "off"
-
   declarative_config: /etc/kong/kong.yaml
-
   router_flavor: expressions
-
   nginx_worker_processes: "auto"
-
   nginx_http_keepalive_requests: "10000"
-
   nginx_http_keepalive_timeout: "75"
 
 proxy:
-
   enabled: true
-
   type: LoadBalancer
 
   http:
-
     enabled: true
-
     servicePort: 80
 
 admin:
-
   enabled: true
 
 manager:
-
   enabled: true
 
 ingressController:
-
   enabled: false
 
 enterprise:
-
   enabled: false
 
 resources:
-
   requests:
-
     cpu: 250m
-
     memory: 256Mi
 
   limits:
-
     cpu: "1"
-
     memory: 1Gi

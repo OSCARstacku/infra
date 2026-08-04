@@ -1,32 +1,38 @@
 _format_version: "3.0"
 
 services:
-
+  # Servicio antiguo
   - name: sdata-ms-base
-
     protocol: grpc
-
     host: sdata-ms-base
-
     port: 50051
-
     routes:
-
       - name: sdata-ms-base-route
-
         paths:
           - /api/v1/base
-
         strip_path: false
-
         protocols:
           - http
           - https
-
     plugins:
-
       - name: grpc-gateway
-
         config:
-
           proto: /etc/kong/protos/base/v1/base.proto
+
+  # 🟢 NUEVO SERVICIO: ms-admin
+  - name: sdata-ms-admin
+    protocol: grpc
+    host: sdata-ms-admin    # El nombre del Service de Kubernetes de ms-admin
+    port: 50051
+    routes:
+      - name: sdata-ms-admin-route
+        paths:
+          - /api/v1/admin
+        strip_path: false
+        protocols:
+          - http
+          - https
+    plugins:
+      - name: grpc-gateway
+        config:
+          proto: /etc/kong/protos/admin/v1/admin.proto
