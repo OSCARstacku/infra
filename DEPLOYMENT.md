@@ -103,3 +103,7 @@ infra/kong/grpc.lua \
 # En infra/pulsar (sudo su / root / USER):
 chmod +x install.sh
 ./install.sh
+
+# BORRAR LO QUE NO SE NECESITA
+docker system prune
+sudo k3s crictl rmi --prune
