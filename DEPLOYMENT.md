@@ -45,21 +45,12 @@ kubectl get pvc
 kubectl get statefulsets
 
 # Levantar Dockerfile de kong
-cd ~/Documentos/mss-sdata
-docker build \
--t kong-grpc:3.9.3 \
--f infra/kong/Dockerfile .
-docker images | grep sdata-kong
+1. docker build -t docker.io/library/kong-grpc:3.9.3 -f infra/kong/Dockerfile .
+2. docker save docker.io/library/kong-grpc:3.9.3 | sudo k3s ctr images import -
+3. kubectl rollout restart deployment/kong -n sdata
+4. kubectl rollout status deployment/kong -n sdata
+5. kubectl exec -it deploy/kong -n sdata -- grep "host:" /etc/kong/kong.yaml
 
-# Cargar el runtime
-docker save kong-grpc:3.9.3 -o kong-grpc.tar
-
-# Importar la imagen en k3s
-sudo k3s ctr images import kong-grpc.tar
-sudo k3s ctr images list | grep kong-grpc
-
-# Verificar
-docker run --rm -it sdata-kong:3.9.3 sh
 
 # En infra/kong (sudo su / root / USER) SOLO PARA INSTALACIÓN INICIAL:
 chmod +x install.sh
