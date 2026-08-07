@@ -63,7 +63,7 @@ kubectl rollout restart deployment kong -n sdata
 # Revisar protos en KONG:
 kubectl logs -n sdata deployment/kong -c proxy | grep grpc
 kubectl exec -it -n sdata deploy/kong -c proxy -- \
-ls /etc/kong/protos/base/v1
+ls /etc/kong/protos
 
 # Otra forma
 # kubectl exec -it -n sdata deployment/kong -c proxy -- sh
